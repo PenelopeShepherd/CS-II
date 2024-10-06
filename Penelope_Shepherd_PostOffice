@@ -1,6 +1,16 @@
+┌───────────────────────────────────────────────────────────────────────────┐
+│                               Post Office                                 │
+├───────────────────────────────────────────────────────────────────────────┤
+│ Name: Penelope Shepherd                                                   │
+│ Log: Initial version with line documentation                              │
+│      and side documentation                                               │
+│ Bonus Features: None                                                      │
+│ Bugs: In the testing I have performed, I have not found any bugs          │
+│ Description: A simple program that takes your input package dimensions   │
+│              and returns the price that it would cost to mail the package │
+└───────────────────────────────────────────────────────────────────────────┘
 
-
-def get_zone(zipcode): #change function name to get_zone and zip to zipcode (Takes a ruturns a what does it do)
+def get_zone(zipcode): #change function name to get_zone and zip to zipcode
     '''
     gets the zones of the starting and ending zipcodes for later use
 
@@ -8,11 +18,11 @@ def get_zone(zipcode): #change function name to get_zone and zip to zipcode (Tak
         zipcode: takes both the starting and ending zip and runs them through this function
 
     Returns:
-        integer between 1-6 depending on the input zip code, the zone of the zip code
+        an integer between 1-6 depending on the input zip code, the zone of the zip code
     
     
     '''
-    if 1<=zipcode <=6999: # if the zip coedes are in between a certain range, the zone is assigned
+    if 1<=zipcode <=6999: # if the zip codes are in between a certain range, the zone is assigned
         return 1 
     elif 7000< zipcode <=19999:
         return 2
@@ -29,7 +39,7 @@ def get_zone(zipcode): #change function name to get_zone and zip to zipcode (Tak
 def get_type(length,height,width): 
     """
 
-    Takes the user input of the length, width, and height and figures our what type of package the user has input
+    Takes the user input of the length, width, and height and figures out what type of package the user has input
 
     Args:
         length (float): the length of the package
@@ -41,17 +51,17 @@ def get_type(length,height,width):
 
     """
     if 3.5<= length<=4.25 and 3.5<=height<=6 and 0.007<=width<=0.016: # Checks if the length, width and height match to a specific mail type
-        return 'pst_crd' # return type as "post card"
+        return 'post_card' # return type as "post card"
     elif 4.25< length<=6 and 6<height<=11.5 and 0.007<=width<=0.015:
-        return 'lrg_pst_crd' # return type as "large post card"
+        return 'large_post_card' # return type as "large post card"
     elif 3.5<= length<=6.125 and 5<=height<=11.5 and 0.16<=width<=0.25:
         return 'envelope'# return type as "envelope"
     elif 6.125< length<=24 and 11<=height<=18 and 0.25<width<=0.5:
-        return 'lrg_envelope' # return type as "large envelope"
+        return 'large_envelope' # return type as "large envelope"
     elif length + 2* (width + height) <= 84:
-        return 'pckge' # return type as "package"
+        return 'package' # return type as "package"
     elif length + 2 * (width + height) <= 130:
-        return 'lrg_pckge' # return type as "large package"
+        return 'large_package' # return type as "large package"
     else:
         return 'unmailable' # if the dimensions don't fit the parameters of a mailable package, than return that the package is unmailable
 def get_cst(mail_type, dist):
@@ -61,7 +71,7 @@ def get_cst(mail_type, dist):
     using the distance and mailtype, calculates the cost of the package
 
     Args:
-        mail_type: the type of mail, each diffrent mail type has a diffrent cost
+        mail_type: the type of mail, each different mail type has a different cost
         dist: the amount of zones needed to travel to mail the package
 
     Returns:
@@ -71,35 +81,25 @@ def get_cst(mail_type, dist):
 
         
     '''
-    if mail_type == 'pst_crd': # each mail type has a flat mail cost added to a additional mailling cost which is multiplied by the zomes the package must travel through
+    if mail_type == 'post_card': # each mail type has a flat mail cost added to an additional mailing cost which is multiplied by the zomes the package must travel through
         return 0.20 + dist * 0.03
-    elif mail_type == 'lrg_pst_crd':
+    elif mail_type == 'large_post_card':
         return 0.37 + dist * 0.03
     elif mail_type =='envelope':
         return 0.37 + dist * 0.04
-    elif mail_type == 'lrg_envelope':
+    elif mail_type == 'large_envelope':
         return 0.6 + dist * 0.05
-    elif mail_type == 'pckge':
+    elif mail_type == 'package':
         return 2.95 + dist * 0.25
-    elif mail_type == 'lrg_pckge':
+    elif mail_type == 'large_package':
         return 3.95 + dist * 0.35
     else:
-        return "unmailable" # if the mailtype was previousely defined as unmailable, then the funcution will continue to return that the package is unmailable
+        return "unmailable" # if the mail type was previously defined as unmailable, then the function will continue to return that the package is unmailable
 def main():
-    '''
-
-
-
-    Args:
-    length (float): the length of the package
-    width (float): the width of the package
-    height (float): the height of the package
-
-    '''
     
     mesurements=input('What are the dimensions and sending location of your box (length, height, width, your zip, the zip of receiving location)').split(",")
     
-    zip_end = 0 
+    zip_end = 0 #Calls all the variables needed to perform the main
     dist = 0
     length = 0
     width = 0
@@ -109,29 +109,29 @@ def main():
 
 
 
-    if len(mesurements) != 5:
-        print("Enter the correct data")
+    if len(measurements) != 5: #if the user has input more than 5 values in their list, the program will let the user know
+        print("Enter the correct data. You have entered too many values")
 
     else:
-        # Define perameters of the package and define terms
+        # Define the parameters of the package and define terms
         try:
             length = float(mesurements[0]) # Names length and turns it into a float
             height = float(mesurements[1]) # Names height and turns it into a float
             width = float(mesurements[2]) # Names width and turns it into a float
-            zip_start = int(mesurements[3]) # Names starting zip code and turns it into a integer
-            zip_end = int(mesurements[4]) # Names ending zip code and turns it into a integer
-        except ValueError: # if there is a letter or special character, stop the program and alert the user that thier input is not usable
-            print('Your input contains a letter or other special character. Please print your mesurements in digits.')
+            zip_start = int(measurements [3]) # Names starting zip code and turns it into an integer
+            zip_end = int(measurements [4]) # Names ending zip code and turns it into an integer
+        except ValueError: # if there is a letter or special character, stop the program and alert the user that their input is not usable
+            print('Your input contains a letter or other special character. Please print your measurements in digits.')
         try:
-            dist = abs(get_zone(zip_start) - get_zone(zip_end)) # grabs the diffrence between the two zones, so you can calculate the price
-        except TypeError: 
-            print('Your input does not follow mailing parameters because someting you have input is wrong, please try again')
+            dist = abs(get_zone(zip_start) - get_zone(zip_end)) # grabs the difference between the two zones, so you can calculate the price
+        except TypeError:  #excepts a type error and tells the user where they went wrong
+            print('Your input does not follow mailing parameters because something you have input is wrong, please try again')
         mail_type = get_type(length,height,width) # Sends Length, Height, Width to the function get_type to get the type
         
-        if mail_type == 'unmailable' or 99999<zip_start or zip_start<0 or zip_end>99999 or zip_end<0: 
+        if mail_type == 'unmailable' or 99999<zip_start or zip_start<0 or zip_end>99999 or zip_end<0: #if they did not input a real zip code, or if the program decided the package was unmailable, this lets the user know
             print("I'm sorry but the dimensions or zip codes of the package you have input qualify as unmailabe, please try again.") # If the mail type was retured as unmailable or the zip code is out of bounds, ends the program
         else:
             print('The total cost to mail this package is ' + str(get_cst(mail_type, dist))) # If the package is mailable the mail type and distance are sent to get the cost
-main()
+main() #performs the main function
 
 
