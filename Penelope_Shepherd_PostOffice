@@ -118,8 +118,8 @@ def main():
             length = float(mesurements[0]) # Names length and turns it into a float
             height = float(mesurements[1]) # Names height and turns it into a float
             width = float(mesurements[2]) # Names width and turns it into a float
-            zip_start = int(measurements [3]) # Names starting zip code and turns it into an integer
-            zip_end = int(measurements [4]) # Names ending zip code and turns it into an integer
+            zip_start = int(mesurements[3]) # Names starting zip code and turns it into an integer
+            zip_end = int(mesurements[4]) # Names ending zip code and turns it into an integer
         except ValueError: # if there is a letter or special character, stop the program and alert the user that their input is not usable
             print('Your input contains a letter or other special character. Please print your measurements in digits.')
         try:
