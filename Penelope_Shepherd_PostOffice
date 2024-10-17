@@ -111,7 +111,7 @@ def main():
 
 
 
-    if len(measurements) != 5: #if the user has input more than 5 values in their list, the program will let the user know
+    if len(mesurements) != 5: #if the user has input more than 5 values in their list, the program will let the user know
         print("Enter the correct data. You have entered too many values")
 
     else:
