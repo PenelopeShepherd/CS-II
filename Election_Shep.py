@@ -32,26 +32,3 @@ with open('trump_freq.csv', "w") as f:
             linecount += 1
             if linecount>9:
                 break
-            
-
-
-
-
-
-'''
-df = px.data.tips()
-counts = px.pie(df, values='tip', names='day')
-counts.show()
-
-counts = dict(sorted(counts.items(), key=lambda item: -item[1]))
-counts = 0
-newcounter = dict()
-for i in counts:
-    if counts < 10:
-        newcounter[i] = counts[i]
-        counts += 1
-    else: 
-        break
-    print(newcounter)
-
-'''
