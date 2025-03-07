@@ -1,16 +1,41 @@
 import random
 uppercase_list = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-lowercase_list = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+lowercase_list = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ']
 vowel_list = ['a','e','i','o','u']
 
 def word_checker(thing):
+    '''
+    Checks word to see if it's a word
+
+    Args:
+        thing(str): the word that the user input.
+    
+    Returns:
+        bool: If the word is valid, return True, else return False.  
+
+    Raises:
+        None
+    '''
+
     thing = ''.join(thing)
-    for i in range(len(list(thing))):
-        if lowercase(thing[i]) not in lowercase_list:
+    for i in list(thing):
+        if lowercase(i) not in lowercase_list:
             return False
     return True
 
-def lowercase(thing):
+def lowercase(thing):    
+    '''
+    Turns the input to lowercase
+
+    Args:
+        thing(str): the input.
+    
+    Returns:
+        thing(str): Return the input as lowercase version of itself. 
+
+    Raises:
+        None
+    '''
     thing = list(thing)
     for i in range(len(thing)):
         for k in range(len(uppercase_list)):
@@ -20,6 +45,18 @@ def lowercase(thing):
     return thing    
    
 def uppercase(thing):
+    '''
+    Turns the input to uppercase
+
+    Args:
+        thing(str): the input.
+    
+    Returns:
+        thing(str): Return the input as uppercase version of itself. 
+
+    Raises:
+        None
+    '''
     thing = []
     for i in range(len(thing)):
         for k in range(len(lowercase_list)):
@@ -29,10 +66,34 @@ def uppercase(thing):
     return thing
 
 def reverse(word):
+    '''
+    Reverses the word
+
+    Args:
+        word(str): the input.
+    
+    Returns:
+        thing(str): A reversed version of itself. 
+
+    Raises:
+        None
+    '''
     print(word[:0])
     return word
 
 def vowel_counter(word):
+    '''
+    Reverses the word
+
+    Args:
+        word(str): the input.
+    
+    Returns:
+        thing(str): A reversed version of itself. 
+
+    Raises:
+        None
+    '''
     counter = 0
     word = lowercase(word)
     word = list(word)
@@ -46,6 +107,18 @@ def vowel_counter(word):
     return word
 
 def consonant_counter(word):
+    '''
+    Counts the consonants in the word
+
+    Args:
+        word(str): the input.
+    
+    Returns:
+        thing(str): A reversed version of itself. 
+
+    Raises:
+        None
+    '''
     counter = 0
     word = lowercase(word)
     word = list(word)
@@ -123,7 +196,10 @@ def initial_finder(name):
     initials = initials[0:-1]
     return initials
 def main():
+
     name = get_name()
+
+    print
 
     print(lowercase(name))
     print(uppercase(name))
@@ -137,6 +213,7 @@ def main():
     print("palindrome = "+ str(palindrome_checker(name)))
   
     print("Your initials are " + str(initial_finder(name)))
+
 main()
 
 
